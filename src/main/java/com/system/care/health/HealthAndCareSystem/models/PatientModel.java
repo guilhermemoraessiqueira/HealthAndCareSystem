@@ -6,7 +6,7 @@ import lombok.*;
 import java.io.Serializable;
 
 @Entity(name = "Patient")
-@Table(name = "TB_PATIENTE")
+@Table(name = "TB_PATIENT")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,6 +23,7 @@ public class PatientModel implements Serializable {
     private String cpf;
     private String email;
     private String phoneNumber;
-    //@Embedded
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "adress_id")
     private AdressModel adress;
 }

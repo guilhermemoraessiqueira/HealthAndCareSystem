@@ -1,16 +1,11 @@
 package com.system.care.health.HealthAndCareSystem.controllers;
 
 import com.system.care.health.HealthAndCareSystem.dtos.PacienteDTO;
-import com.system.care.health.HealthAndCareSystem.dtos.PatientRecordDto;
-import com.system.care.health.HealthAndCareSystem.models.AdressModel;
-import com.system.care.health.HealthAndCareSystem.models.PatientModel;
 import com.system.care.health.HealthAndCareSystem.repositories.PatientRepository;
 import com.system.care.health.HealthAndCareSystem.services.PatientService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
