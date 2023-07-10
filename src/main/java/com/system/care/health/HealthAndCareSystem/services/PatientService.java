@@ -19,10 +19,14 @@ public class PatientService {
     public PacienteDTO save(PacienteDTO pacienteDTO){
         PatientModel patientModel= modelMapper.map(pacienteDTO, PatientModel.class);
         return modelMapper.map(patientRepository.save(patientModel), PacienteDTO.class);
-
     }
 
     public List<PatientModel> getAll() {
         return patientRepository.findAll();
+    }
+
+    public PatientModel findById(Long id) {
+        return patientRepository.findById(id).get();
+
     }
 }

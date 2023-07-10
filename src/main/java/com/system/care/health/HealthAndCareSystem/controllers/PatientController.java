@@ -7,7 +7,6 @@ import com.system.care.health.HealthAndCareSystem.services.PatientService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +28,12 @@ public class PatientController {
     }
 
     @GetMapping
-    public List<PatientModel> findAll(Pageable page){
-        return repository.findAll();
+    public ResponseEntity<List<PatientModel>> findAll(){
+        return ResponseEntity .status(200).body(patientService.getAll());
+    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PatientModel> findById(@PathVariable Long id){
+        return ResponseEntity .status(200).body(patientService.findById(id));
     }
 }
