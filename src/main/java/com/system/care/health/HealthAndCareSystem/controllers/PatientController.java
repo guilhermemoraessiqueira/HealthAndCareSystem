@@ -49,10 +49,11 @@ public class PatientController {
         }
     }
 
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity delete (@PathVariable Long id){
-//        return ResponseEntity .status(204).body(patientService.delete(id));
-//    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteProduct(@PathVariable Long id) {
+        patientService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 
 
 }

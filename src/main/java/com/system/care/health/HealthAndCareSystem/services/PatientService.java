@@ -48,7 +48,7 @@ public class PatientService {
     }
 
 
-//    public void delete(Long id) {
-//        patientRepository.deleteById(id);
-//    }
+    public void delete(Long id) {
+        patientRepository.deleteById(id);
+    }
 }
