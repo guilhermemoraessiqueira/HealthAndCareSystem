@@ -7,15 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdressDTO {
-    //@NotBlank
+public class AddressDTO {
     String street;
-    //@NotBlank
     String neighborhood;
-    //@NotBlank
-    //@Pattern(regexp = "\\d{8}")
     String zipCode;
-    //@NotBlank
     String city;
     String number;
     String complement;

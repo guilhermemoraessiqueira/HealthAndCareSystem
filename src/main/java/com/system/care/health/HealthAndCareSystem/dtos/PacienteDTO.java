@@ -14,6 +14,6 @@ public class PacienteDTO {
     @NotBlank String cpf;
     @NotBlank String email;
     @NotBlank String phoneNumber;
-    AdressDTO adress;
+    AddressDTO address;
 
 }

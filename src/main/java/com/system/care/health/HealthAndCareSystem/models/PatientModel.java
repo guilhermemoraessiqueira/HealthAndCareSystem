@@ -24,6 +24,6 @@ public class PatientModel implements Serializable {
     private String email;
     private String phoneNumber;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "adress_id")
-    private AdressModel adress;
+    @JoinColumn(name = "address_id")
+    private AddressModel address;
 }

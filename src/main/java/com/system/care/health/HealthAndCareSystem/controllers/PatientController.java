@@ -7,6 +7,7 @@ import com.system.care.health.HealthAndCareSystem.services.PatientService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +29,30 @@ public class PatientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PatientModel>> findAll(){
-        return ResponseEntity .status(200).body(patientService.getAll());
+    public ResponseEntity<Page<PatientModel>> findAll(@RequestParam("pagina") int pagina,
+                                                      @RequestParam("itens") int itens){
+        return ResponseEntity .status(200).body(patientService.getAll(pagina, itens));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PatientModel> findById(@PathVariable Long id){
+    public ResponseEntity findById(@PathVariable Long id){
         return ResponseEntity .status(200).body(patientService.findById(id));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PatientModel> update (@PathVariable Long id, @RequestBody PatientModel patientModel){
+        PatientModel updatedPatient = patientService.updateById(id, patientModel);
+        if (updatedPatient != null) {
+            return ResponseEntity.ok(updatedPatient);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity delete (@PathVariable Long id){
+//        return ResponseEntity .status(204).body(patientService.delete(id));
+//    }
+
+
 }
