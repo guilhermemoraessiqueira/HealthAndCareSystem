@@ -1,6 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.controllers;
 
-import com.system.care.health.HealthAndCareSystem.dtos.PacienteDTO;
+import com.system.care.health.HealthAndCareSystem.dtos.PacientDTO;
 import com.system.care.health.HealthAndCareSystem.models.PatientModel;
 import com.system.care.health.HealthAndCareSystem.repositories.PatientRepository;
 import com.system.care.health.HealthAndCareSystem.services.PatientService;
@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("patient")
@@ -24,8 +22,8 @@ public class PatientController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity register(@RequestBody @Valid PacienteDTO pacienteDTO){
-        return ResponseEntity .status(201).body(patientService.save(pacienteDTO));
+    public ResponseEntity register(@RequestBody @Valid PacientDTO pacientDTO){
+        return ResponseEntity .status(201).body(patientService.save(pacientDTO));
     }
 
     @GetMapping
@@ -54,6 +52,4 @@ public class PatientController {
         patientService.delete(id);
         return ResponseEntity.noContent().build();
     }
-
-
 }

@@ -17,5 +17,4 @@ public class HealthAndCareSystemApplication {
 	public ModelMapper modelMapper(){
 		return new ModelMapper();
 	}
-
 }

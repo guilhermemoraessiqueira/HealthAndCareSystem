@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PacienteDTO {
+public class PacientDTO {
     @NotBlank String name;
     @NotBlank String password;
     @NotBlank String cpf;

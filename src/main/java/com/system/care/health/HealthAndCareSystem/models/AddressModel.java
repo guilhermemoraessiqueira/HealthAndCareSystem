@@ -16,7 +16,7 @@ import lombok.Setter;
 public class AddressModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String street; // Logradouro
     private String neighborhood; // Bairro

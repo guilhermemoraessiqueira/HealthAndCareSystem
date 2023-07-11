@@ -2,7 +2,6 @@ package com.system.care.health.HealthAndCareSystem.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.io.Serializable;
 
 @Entity(name = "Patient")

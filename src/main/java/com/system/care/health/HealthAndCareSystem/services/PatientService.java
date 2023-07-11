@@ -1,6 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.services;
 
-import com.system.care.health.HealthAndCareSystem.dtos.PacienteDTO;
+import com.system.care.health.HealthAndCareSystem.dtos.PacientDTO;
 import com.system.care.health.HealthAndCareSystem.models.PatientModel;
 import com.system.care.health.HealthAndCareSystem.repositories.PatientRepository;
 import lombok.AllArgsConstructor;
@@ -16,9 +16,9 @@ public class PatientService {
     PatientRepository patientRepository;
     ModelMapper modelMapper;
 
-    public PacienteDTO save(PacienteDTO pacienteDTO){
-        PatientModel patientModel= modelMapper.map(pacienteDTO, PatientModel.class);
-        return modelMapper.map(patientRepository.save(patientModel), PacienteDTO.class);
+    public PacientDTO save(PacientDTO pacientDTO){
+        PatientModel patientModel= modelMapper.map(pacientDTO, PatientModel.class);
+        return modelMapper.map(patientRepository.save(patientModel), PacientDTO.class);
     }
 
     public Page<PatientModel> getAll(int pagina, int itens) {
@@ -46,7 +46,6 @@ public class PatientService {
         }
         return null;
     }
-
 
     public void delete(Long id) {
         patientRepository.deleteById(id);
