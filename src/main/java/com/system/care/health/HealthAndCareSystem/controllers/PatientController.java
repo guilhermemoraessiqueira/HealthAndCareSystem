@@ -1,6 +1,7 @@
 package com.system.care.health.HealthAndCareSystem.controllers;
 
-import com.system.care.health.HealthAndCareSystem.dtos.PacientDTO;
+import com.system.care.health.HealthAndCareSystem.dtos.PatientDTO;
+import com.system.care.health.HealthAndCareSystem.dtos.PatientReturnDTO;
 import com.system.care.health.HealthAndCareSystem.models.PatientModel;
 import com.system.care.health.HealthAndCareSystem.repositories.PatientRepository;
 import com.system.care.health.HealthAndCareSystem.services.PatientService;
@@ -22,19 +23,19 @@ public class PatientController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity register(@RequestBody @Valid PacientDTO pacientDTO){
-        return ResponseEntity .status(201).body(patientService.save(pacientDTO));
+    public ResponseEntity register(@RequestBody @Valid PatientDTO patientDTO){
+        return ResponseEntity .status(201).body(patientService.save(patientDTO));
     }
 
     @GetMapping
     public ResponseEntity<Page<PatientModel>> findAll(@RequestParam("pagina") int pagina,
-                                                      @RequestParam("itens") int itens){
+                                                          @RequestParam("itens") int itens){
         return ResponseEntity .status(200).body(patientService.getAll(pagina, itens));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity findById(@PathVariable Long id){
-        return ResponseEntity .status(200).body(patientService.findById(id));
+    public ResponseEntity<PatientReturnDTO> findById(@PathVariable Long id, PatientReturnDTO patientReturnDTO){
+        return ResponseEntity .status(200).body(patientService.getById(patientReturnDTO,id));
     }
 
     @PutMapping("/{id}")
