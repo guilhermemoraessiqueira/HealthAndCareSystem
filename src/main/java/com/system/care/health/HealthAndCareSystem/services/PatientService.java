@@ -1,19 +1,22 @@
 package com.system.care.health.HealthAndCareSystem.services;
 
-import com.system.care.health.HealthAndCareSystem.dtos.PatientDTO;
-import com.system.care.health.HealthAndCareSystem.dtos.PatientReturnDTO;
+import com.system.care.health.HealthAndCareSystem.dtos.patient.PatientDTO;
+import com.system.care.health.HealthAndCareSystem.dtos.patient.PatientReturnDTO;
 import com.system.care.health.HealthAndCareSystem.models.PatientModel;
 import com.system.care.health.HealthAndCareSystem.repositories.PatientRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class PatientService {
-
     PatientRepository patientRepository;
     ModelMapper modelMapper;
 
@@ -22,12 +25,12 @@ public class PatientService {
         return modelMapper.map(patientRepository.save(patientModel), PatientDTO.class);
     }
 
-    public Page<PatientModel> getAll(int pagina, int itens) {
-        return patientRepository.findAll(PageRequest.of(pagina, itens));
+    public Page<PatientReturnDTO> getAll(int page, int itens) {
+        return patientRepository.findAll(PageRequest.of(page, itens)).map(this::convertToPatientReturnDTO);
+        //return patientRepository.obterTodos(PageRequest.of(pagina, itens));
     }
 
-    public PatientReturnDTO getById(PatientReturnDTO patientReturnDTO, Long id) {
-        PatientModel patientModel = modelMapper.map(patientReturnDTO, PatientModel.class);
+    public PatientReturnDTO getById(Long id) {
         return modelMapper.map(patientRepository.findById(id), PatientReturnDTO.class);
     }
 
@@ -51,5 +54,9 @@ public class PatientService {
 
     public void delete(Long id) {
         patientRepository.deleteById(id);
+    }
+    private PatientReturnDTO convertToPatientReturnDTO(PatientModel paciente) {
+        PatientReturnDTO patientReturnDTO = modelMapper.map(paciente, PatientReturnDTO.class);
+        return patientReturnDTO;
     }
 }

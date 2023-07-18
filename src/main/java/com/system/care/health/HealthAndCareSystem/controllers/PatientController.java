@@ -1,7 +1,7 @@
 package com.system.care.health.HealthAndCareSystem.controllers;
 
-import com.system.care.health.HealthAndCareSystem.dtos.PatientDTO;
-import com.system.care.health.HealthAndCareSystem.dtos.PatientReturnDTO;
+import com.system.care.health.HealthAndCareSystem.dtos.patient.PatientDTO;
+import com.system.care.health.HealthAndCareSystem.dtos.patient.PatientReturnDTO;
 import com.system.care.health.HealthAndCareSystem.models.PatientModel;
 import com.system.care.health.HealthAndCareSystem.repositories.PatientRepository;
 import com.system.care.health.HealthAndCareSystem.services.PatientService;
@@ -28,18 +28,22 @@ public class PatientController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<PatientModel>> findAll(@RequestParam("pagina") int pagina,
-                                                          @RequestParam("itens") int itens){
-        return ResponseEntity .status(200).body(patientService.getAll(pagina, itens));
+    public ResponseEntity<Page<PatientReturnDTO>> getAll(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int itens) {
+        Page<PatientReturnDTO> pacientesPage = patientService.getAll(page, itens);
+        return ResponseEntity.ok(pacientesPage);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PatientReturnDTO> findById(@PathVariable Long id, PatientReturnDTO patientReturnDTO){
-        return ResponseEntity .status(200).body(patientService.getById(patientReturnDTO,id));
+    public ResponseEntity<PatientReturnDTO> findById(@PathVariable Long id){
+        return ResponseEntity .status(200).body(patientService.getById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PatientModel> update (@PathVariable Long id, @RequestBody PatientModel patientModel){
+    public ResponseEntity<PatientModel> update (
+            @PathVariable Long id,
+            @RequestBody PatientModel patientModel){
         PatientModel updatedPatient = patientService.updateById(id, patientModel);
         if (updatedPatient != null) {
             return ResponseEntity.ok(updatedPatient);
@@ -49,7 +53,7 @@ public class PatientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<Object> delete(@PathVariable Long id) {
         patientService.delete(id);
         return ResponseEntity.noContent().build();
     }

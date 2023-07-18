@@ -15,4 +15,8 @@ public class AddressDTO {
     String number;
     String complement;
     String state;
+
+    public AddressDTO(String street) {
+        this.street = street;
+    }
 }
