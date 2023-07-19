@@ -1,4 +1,4 @@
-package com.system.care.health.HealthAndCareSystem.dtos;
+package com.system.care.health.HealthAndCareSystem.dtos.address;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

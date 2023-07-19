@@ -2,10 +2,7 @@ package com.system.care.health.HealthAndCareSystem.services;
 
 import com.system.care.health.HealthAndCareSystem.dtos.doctor.DoctorDTO;
 import com.system.care.health.HealthAndCareSystem.dtos.doctor.DoctorReturnDTO;
-import com.system.care.health.HealthAndCareSystem.dtos.patient.PatientDTO;
-import com.system.care.health.HealthAndCareSystem.dtos.patient.PatientReturnDTO;
 import com.system.care.health.HealthAndCareSystem.models.DoctorModel;
-import com.system.care.health.HealthAndCareSystem.models.PatientModel;
 import com.system.care.health.HealthAndCareSystem.repositories.DoctorRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -32,8 +29,6 @@ public class DoctorService {
     public Page<DoctorReturnDTO> getAll(int page, int itens) {
         return doctorRepository.findAll(PageRequest.of(page,itens)).map(this::convertToPatientReturnDTO);
     }
-
-
 
     private DoctorReturnDTO convertToPatientReturnDTO(DoctorModel doctor) {
         DoctorReturnDTO doctorReturnDTO = modelMapper.map(doctor, DoctorReturnDTO.class);

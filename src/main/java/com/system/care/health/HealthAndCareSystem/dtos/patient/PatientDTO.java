@@ -1,6 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.dtos.patient;
 
-import com.system.care.health.HealthAndCareSystem.dtos.AddressDTO;
+import com.system.care.health.HealthAndCareSystem.dtos.address.AddressDTO;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,5 +21,4 @@ public class PatientDTO {
     @NotBlank
     private String phoneNumber;
     private AddressDTO address;
-
 }

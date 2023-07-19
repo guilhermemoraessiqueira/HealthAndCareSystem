@@ -1,7 +1,7 @@
 package com.system.care.health.HealthAndCareSystem.dtos.doctor;
 
 import com.system.care.health.HealthAndCareSystem.Specialty;
-import com.system.care.health.HealthAndCareSystem.dtos.AddressDTO;
+import com.system.care.health.HealthAndCareSystem.dtos.address.AddressDTO;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

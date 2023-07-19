@@ -15,7 +15,6 @@ import java.io.Serializable;
 @EqualsAndHashCode(of = "idDoctor")
 public class DoctorModel implements Serializable {
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idDoctor;
@@ -25,8 +24,7 @@ public class DoctorModel implements Serializable {
     @Enumerated(EnumType.STRING)
     private Specialty specialty;
     private String phoneNumber;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private AddressModel address;
-
 }
