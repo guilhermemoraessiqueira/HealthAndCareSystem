@@ -1,5 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.models;
 
+import com.system.care.health.HealthAndCareSystem.dtos.address.AddressDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +17,7 @@ import lombok.Setter;
 public class AddressModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String street; // Logradouro
     private String neighborhood; // Bairro
@@ -25,4 +26,14 @@ public class AddressModel {
     private String complement; // Complemento
     private String city; // Cidade
     private String state; // UF
+
+    public AddressModel(AddressDTO dados) {
+        this.street = dados.getStreet();
+        this.neighborhood = dados.getNeighborhood();
+        this.zipCode = dados.getZipCode();
+        this.city = dados.getCity();
+        this.number = dados.getNumber();
+        this.complement = dados.getComplement();
+        this.state = dados.getState();
+    }
 }

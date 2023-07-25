@@ -1,7 +1,11 @@
 package com.system.care.health.HealthAndCareSystem.dtos.patient;
 
-import com.system.care.health.HealthAndCareSystem.dtos.address.AddressDTO;
+import com.system.care.health.HealthAndCareSystem.models.AddressModel;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,15 +14,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatientDTO {
-    @NotBlank
-    private String name;
-    @NotBlank
-    private String password;
-    @NotBlank
-    private String cpf;
-    @NotBlank
-    private String email;
-    @NotBlank
-    private String phoneNumber;
-    private AddressDTO address;
+    @NotBlank String name;
+    @NotBlank String password;
+    @NotBlank @Email String email;
+    @NotBlank String phoneNumber;
+    @NotBlank @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}") String cpf;
+    @NotNull @Valid AddressModel address;
 }
