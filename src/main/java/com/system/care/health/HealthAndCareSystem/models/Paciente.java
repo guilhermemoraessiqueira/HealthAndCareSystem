@@ -4,25 +4,25 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 
-@Entity(name = "Patient")
-@Table(name = "TB_PATIENT")
+@Entity(name = "Paciente")
+@Table(name = "TB_PACIENTE")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "idPatient")
-public class PatientModel implements Serializable {
+@EqualsAndHashCode(of = "id")
+public class Paciente implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPatient;
-    private String name;
-    private String password;
+    private Long id;
+    private String nome;
+    private String senha;
     private String cpf;
     private String email;
-    private String phoneNumber;
+    private String numeroTelefone;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
-    private AddressModel address;
+    @JoinColumn(name = "id_endereco")
+    private Endereco endereco;
 }

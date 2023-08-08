@@ -1,7 +1,7 @@
 package com.system.care.health.HealthAndCareSystem.dtos.doctor;
 
-import com.system.care.health.HealthAndCareSystem.Specialty;
-import com.system.care.health.HealthAndCareSystem.dtos.address.AddressDTO;
+import com.system.care.health.HealthAndCareSystem.enums.EspecialidadeEnum;
+import com.system.care.health.HealthAndCareSystem.dtos.address.DadosEndereco;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,21 +13,21 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DoctorRegisterDTO {
+public class DadosCadastroMedico {
     @NotBlank
-    private String name;
+    private String nome;
     @NotBlank
-    private String password;
+    private String senha;
     @NotBlank
     private String email;
     @NotBlank
     @Pattern(regexp = "\\d{4,6}")
     private String crm;
     @NotBlank
-    private String phoneNumber;
+    private String numeroTelefone;
     @NotNull
-    private Specialty specialty;
+    private EspecialidadeEnum especilidade;
     @NotNull
     @Valid
-    private AddressDTO address;
+    private DadosEndereco endereco;
 }

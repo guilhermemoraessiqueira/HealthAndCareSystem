@@ -1,6 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.dtos.patient;
 
-import com.system.care.health.HealthAndCareSystem.models.AddressModel;
+import com.system.care.health.HealthAndCareSystem.models.Endereco;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PatientDTO {
-    @NotBlank String name;
-    @NotBlank String password;
+public class DadosRegistroPaciente {
+    @NotBlank String nome;
+    @NotBlank String senha;
     @NotBlank @Email String email;
-    @NotBlank String phoneNumber;
+    @NotBlank String numeroTelefone;
     @NotBlank @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}") String cpf;
-    @NotNull @Valid AddressModel address;
+    @NotNull @Valid Endereco endereco;
 }
