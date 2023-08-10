@@ -3,10 +3,7 @@ package com.system.care.health.HealthAndCareSystem.models;
 import com.system.care.health.HealthAndCareSystem.dtos.doctor.DadosCadastroMedico;
 import com.system.care.health.HealthAndCareSystem.enums.EspecialidadeEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -54,11 +51,12 @@ public class Medico implements Serializable {
         this.email = dados.getEmail();
         this.numeroTelefone = dados.getNumeroTelefone();
         this.crm = dados.getCrm();
-        this.especialidade = dados.getEspecilidade();
+        this.especialidade = dados.getEspecialidade();
         this.endereco = new Endereco(dados.getEndereco());
     }
 
     public void excluir(){
         this.ativo= false;
     }
+
 }

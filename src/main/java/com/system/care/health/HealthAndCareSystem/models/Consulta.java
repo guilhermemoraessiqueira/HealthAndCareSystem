@@ -2,10 +2,7 @@ package com.system.care.health.HealthAndCareSystem.models;
 
 import com.system.care.health.HealthAndCareSystem.enums.MotivoCancelamentoEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -37,5 +34,10 @@ public class Consulta implements Serializable {
     private MotivoCancelamentoEnum motivoCancelamento;
 
     public Consulta(Long id, Medico medico, Paciente paciente, LocalDateTime horaMarcada, MotivoCancelamentoEnum motivoCancelamento) {
+        this.id = id;
+        this.medico = medico;
+        this.paciente = paciente;
+        this.horaMarcada = horaMarcada;
+        this.motivoCancelamento = motivoCancelamento;
     }
 }

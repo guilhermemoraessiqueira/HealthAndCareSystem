@@ -17,5 +17,9 @@ public class DadosDetalhamentoConsulta {
     private LocalDateTime horaDaConsulta;
 
     public DadosDetalhamentoConsulta(Consulta consulta) {
+        this.idConsulta = consulta.getId();
+        this.idMedico = consulta.getMedico().getId();
+        this.idPaciente = consulta.getId();
+        this.horaDaConsulta = consulta.getHoraMarcada();
     }
 }

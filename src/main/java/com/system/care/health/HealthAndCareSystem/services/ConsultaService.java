@@ -35,7 +35,7 @@ public class ConsultaService {
             throw new ValidacaoExcepition("Id do médico informado não existe!");
         }
 
-        validation.forEach(v -> v.validar(dados));
+        //validation.forEach(v -> v.validar(dados));
 
         var paciente = pacienteRepository.getReferenceById(dados.getIdPaciente());
         var medicos = escolherMedico(dados);

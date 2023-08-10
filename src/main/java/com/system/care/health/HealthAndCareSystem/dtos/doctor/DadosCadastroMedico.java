@@ -26,7 +26,7 @@ public class DadosCadastroMedico {
     @NotBlank
     private String numeroTelefone;
     @NotNull
-    private EspecialidadeEnum especilidade;
+    private EspecialidadeEnum especialidade;
     @NotNull
     @Valid
     private DadosEndereco endereco;
