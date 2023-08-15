@@ -1,5 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.dtos.consultation;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.system.care.health.HealthAndCareSystem.enums.EspecialidadeEnum;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
