@@ -1,4 +1,4 @@
-package com.system.care.health.HealthAndCareSystem.dtos.consultation;
+package com.system.care.health.HealthAndCareSystem.dtos.consulta;
 
 import com.system.care.health.HealthAndCareSystem.models.Consulta;
 import lombok.AllArgsConstructor;

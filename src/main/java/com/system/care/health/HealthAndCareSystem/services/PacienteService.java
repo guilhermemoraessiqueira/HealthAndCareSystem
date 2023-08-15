@@ -1,8 +1,8 @@
 package com.system.care.health.HealthAndCareSystem.services;
 
-import com.system.care.health.HealthAndCareSystem.dtos.patient.DadosListagemPaciente;
-import com.system.care.health.HealthAndCareSystem.dtos.patient.DadosRegistroPaciente;
-import com.system.care.health.HealthAndCareSystem.dtos.patient.DadosDetalhamentoPaciente;
+import com.system.care.health.HealthAndCareSystem.dtos.paciente.DadosListagemPaciente;
+import com.system.care.health.HealthAndCareSystem.dtos.paciente.DadosRegistroPaciente;
+import com.system.care.health.HealthAndCareSystem.dtos.paciente.DadosDetalhamentoPaciente;
 import com.system.care.health.HealthAndCareSystem.models.Paciente;
 import com.system.care.health.HealthAndCareSystem.repositories.PacienteRepository;
 import lombok.AllArgsConstructor;

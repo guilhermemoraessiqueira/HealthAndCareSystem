@@ -1,7 +1,7 @@
-package com.system.care.health.HealthAndCareSystem.dtos.doctor;
+package com.system.care.health.HealthAndCareSystem.dtos.medico;
 
 import com.system.care.health.HealthAndCareSystem.enums.EspecialidadeEnum;
-import com.system.care.health.HealthAndCareSystem.dtos.address.DadosEndereco;
+import com.system.care.health.HealthAndCareSystem.dtos.endereco.DadosEndereco;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

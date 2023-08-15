@@ -1,7 +1,7 @@
-package com.system.care.health.HealthAndCareSystem.validation.consultation;
+package com.system.care.health.HealthAndCareSystem.validacao.consulta;
 
 import com.system.care.health.HealthAndCareSystem.ValidacaoExcepition;
-import com.system.care.health.HealthAndCareSystem.dtos.consultation.DadosAgendamentoConsulta;
+import com.system.care.health.HealthAndCareSystem.dtos.consulta.DadosAgendamentoConsulta;
 import com.system.care.health.HealthAndCareSystem.repositories.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

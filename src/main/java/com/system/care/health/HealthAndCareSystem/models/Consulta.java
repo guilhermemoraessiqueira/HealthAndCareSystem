@@ -43,4 +43,14 @@ public class Consulta implements Serializable {
         this.horaMarcada = horaMarcada;
         this.motivoCancelamento = motivoCancelamento;
     }
+
+    public Consulta (Long id, MotivoCancelamentoEnum motivoCancelamentoEnum){
+        this.id = id;
+        this.motivoCancelamento = motivoCancelamentoEnum;
+    }
+
+    public void cancelar(MotivoCancelamentoEnum motivo) {
+        this.motivoCancelamento = motivo;
+    }
+
 }

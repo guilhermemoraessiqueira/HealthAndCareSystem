@@ -1,4 +1,4 @@
-package com.system.care.health.HealthAndCareSystem.dtos.patient;
+package com.system.care.health.HealthAndCareSystem.dtos.paciente;
 
 import com.system.care.health.HealthAndCareSystem.models.Endereco;
 import jakarta.validation.Valid;

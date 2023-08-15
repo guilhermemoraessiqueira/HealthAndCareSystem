@@ -1,4 +1,4 @@
-package com.system.care.health.HealthAndCareSystem.dtos.address;
+package com.system.care.health.HealthAndCareSystem.dtos.endereco;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.system.care.health.HealthAndCareSystem.dtos.doctor;
+package com.system.care.health.HealthAndCareSystem.dtos.medico;
 
 import com.system.care.health.HealthAndCareSystem.models.Endereco;
 import lombok.*;

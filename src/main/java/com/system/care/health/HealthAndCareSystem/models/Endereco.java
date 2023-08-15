@@ -1,6 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.models;
 
-import com.system.care.health.HealthAndCareSystem.dtos.address.DadosEndereco;
+import com.system.care.health.HealthAndCareSystem.dtos.endereco.DadosEndereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

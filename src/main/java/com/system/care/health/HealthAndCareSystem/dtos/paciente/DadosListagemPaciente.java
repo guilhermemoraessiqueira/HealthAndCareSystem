@@ -1,4 +1,4 @@
-package com.system.care.health.HealthAndCareSystem.dtos.doctor;
+package com.system.care.health.HealthAndCareSystem.dtos.paciente;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DadosListagemMedico {
-    private Long id;
+public class DadosListagemPaciente {
     private String nome;
-    private String crm;
-
-
+    private String email;
+    private String cpf;
 }

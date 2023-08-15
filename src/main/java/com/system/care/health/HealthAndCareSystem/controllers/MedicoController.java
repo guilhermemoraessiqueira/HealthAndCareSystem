@@ -1,9 +1,8 @@
 package com.system.care.health.HealthAndCareSystem.controllers;
 
-import com.system.care.health.HealthAndCareSystem.dtos.doctor.DadosDetalhamentoMedico;
-import com.system.care.health.HealthAndCareSystem.dtos.doctor.DadosCadastroMedico;
-import com.system.care.health.HealthAndCareSystem.dtos.doctor.DadosListagemMedico;
-import com.system.care.health.HealthAndCareSystem.models.Paciente;
+import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosDetalhamentoMedico;
+import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosCadastroMedico;
+import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosListagemMedico;
 import com.system.care.health.HealthAndCareSystem.repositories.MedicoRepository;
 import com.system.care.health.HealthAndCareSystem.services.MedicoService;
 import jakarta.validation.Valid;

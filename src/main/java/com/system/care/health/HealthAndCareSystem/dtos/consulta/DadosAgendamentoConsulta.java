@@ -1,6 +1,5 @@
-package com.system.care.health.HealthAndCareSystem.dtos.consultation;
+package com.system.care.health.HealthAndCareSystem.dtos.consulta;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.system.care.health.HealthAndCareSystem.enums.EspecialidadeEnum;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
@@ -14,6 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DadosAgendamentoConsulta {
+    private Long id;
 
     private Long idMedico;
 

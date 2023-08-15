@@ -1,14 +1,16 @@
 package com.system.care.health.HealthAndCareSystem.services;
 
 import com.system.care.health.HealthAndCareSystem.ValidacaoExcepition;
-import com.system.care.health.HealthAndCareSystem.dtos.consultation.DadosAgendamentoConsulta;
-import com.system.care.health.HealthAndCareSystem.dtos.consultation.DadosDetalhamentoConsulta;
+import com.system.care.health.HealthAndCareSystem.dtos.consulta.DadosAgendamentoConsulta;
+import com.system.care.health.HealthAndCareSystem.dtos.consulta.DadosCancelamentoConsulta;
+import com.system.care.health.HealthAndCareSystem.dtos.consulta.DadosDetalhamentoConsulta;
 import com.system.care.health.HealthAndCareSystem.models.Consulta;
 import com.system.care.health.HealthAndCareSystem.models.Medico;
 import com.system.care.health.HealthAndCareSystem.repositories.ConsultaRepository;
 import com.system.care.health.HealthAndCareSystem.repositories.MedicoRepository;
 import com.system.care.health.HealthAndCareSystem.repositories.PacienteRepository;
-import com.system.care.health.HealthAndCareSystem.validation.consultation.ValidadorAgendamentoDeConsulta;
+import com.system.care.health.HealthAndCareSystem.validacao.cancelamento.ValidadorCancelamentoDeConsulta;
+import com.system.care.health.HealthAndCareSystem.validacao.consulta.ValidadorAgendamentoDeConsulta;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,8 @@ public class ConsultaService {
     private PacienteRepository pacienteRepository;
 
     private List<ValidadorAgendamentoDeConsulta> validadores;
+
+    private List<ValidadorCancelamentoDeConsulta> validadoresCancelamento;
 
     public DadosDetalhamentoConsulta agendarConsulta(DadosAgendamentoConsulta dados) {
         if (!pacienteRepository.existsById(dados.getIdMedico())) {
@@ -48,6 +52,18 @@ public class ConsultaService {
         consultaRepository.save(consulta);
 
         return new DadosDetalhamentoConsulta(consulta);
+    }
+
+    public void cancelar(DadosCancelamentoConsulta dados) {
+        if (!consultaRepository.existsById(dados.getIdConsulta())) {
+            throw new ValidacaoExcepition("Id da consulta informado não existe!");
+        }
+
+        validadoresCancelamento.forEach(v -> v.validar(dados));
+
+        var consulta = consultaRepository.getReferenceById(dados.getIdConsulta());
+        consulta.cancelar(dados.getMotivo());
+        consultaRepository.save(consulta);
     }
 
     private List<Medico> escolherMedico(DadosAgendamentoConsulta dados) {

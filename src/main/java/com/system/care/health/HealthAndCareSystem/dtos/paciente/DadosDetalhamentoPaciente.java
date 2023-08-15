@@ -1,6 +1,6 @@
-package com.system.care.health.HealthAndCareSystem.dtos.patient;
+package com.system.care.health.HealthAndCareSystem.dtos.paciente;
 
-import com.system.care.health.HealthAndCareSystem.dtos.address.DadosEndereco;
+import com.system.care.health.HealthAndCareSystem.dtos.endereco.DadosEndereco;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

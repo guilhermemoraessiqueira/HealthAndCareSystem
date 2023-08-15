@@ -1,6 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.models;
 
-import com.system.care.health.HealthAndCareSystem.dtos.doctor.DadosCadastroMedico;
+import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosCadastroMedico;
 import com.system.care.health.HealthAndCareSystem.enums.EspecialidadeEnum;
 import jakarta.persistence.*;
 import lombok.*;
