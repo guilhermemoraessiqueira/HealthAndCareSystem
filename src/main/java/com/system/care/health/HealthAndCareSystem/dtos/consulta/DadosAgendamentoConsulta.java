@@ -20,9 +20,10 @@ public class DadosAgendamentoConsulta {
     @NotNull
     private Long idPaciente;
 
-    @NotNull
+    @NotNull(message = "Data da consulta obrigatória")
     @Future
     private LocalDateTime horaDaConsulta;
 
+    @NotNull(message = "Especialidade é obrigatória")
     private EspecialidadeEnum especialidade;
 }

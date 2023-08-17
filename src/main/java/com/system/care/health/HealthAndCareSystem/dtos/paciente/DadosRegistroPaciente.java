@@ -14,10 +14,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DadosRegistroPaciente {
-    @NotBlank String nome;
-    @NotBlank String senha;
-    @NotBlank @Email String email;
-    @NotBlank String numeroTelefone;
-    @NotBlank @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}") String cpf;
-    @NotNull @Valid Endereco endereco;
+    @NotBlank(message = "Nome é obrigatório")
+    String nome;
+
+    @NotBlank(message = "Senha é obrigatório")
+    String senha;
+
+    @NotBlank(message = "Email é obrigatório")
+    @Email(message = "Formato do email é inválido")
+    String email;
+
+    @NotBlank(message = "Telefone é obrigatório")
+    String numeroTelefone;
+
+    @NotBlank(message = "CPF é obrigatório")
+    @Pattern(regexp = "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}", message = "Formato do CPF é inválido")
+    String cpf;
+
+    @NotNull(message = "Dados do endereço são obrigatórios")
+    @Valid
+    Endereco endereco;
 }
