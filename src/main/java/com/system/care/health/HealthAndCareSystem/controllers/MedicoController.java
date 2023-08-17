@@ -1,8 +1,9 @@
 package com.system.care.health.HealthAndCareSystem.controllers;
 
-import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosDetalhamentoMedico;
 import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosCadastroMedico;
+import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosDetalhamentoMedico;
 import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosListagemMedico;
+import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosMedicosDisponiveis;
 import com.system.care.health.HealthAndCareSystem.repositories.MedicoRepository;
 import com.system.care.health.HealthAndCareSystem.services.MedicoService;
 import jakarta.validation.Valid;
@@ -14,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("medico")
 public class MedicoController {
@@ -23,6 +26,15 @@ public class MedicoController {
 
     @Autowired
     MedicoService medicoService;
+
+    @GetMapping("/disponiveis")
+    public ResponseEntity<List<DadosListagemMedico>> listarMedicosDisponiveis(@RequestParam(defaultValue = "0") int page,
+                                                                              @RequestParam(defaultValue = "10") int itens,
+                                                                              @RequestBody DadosMedicosDisponiveis dadosMedicosDisponiveis){
+        Pageable pageable = PageRequest.of(page, itens);
+        List<DadosListagemMedico> medicosDisponiveis = medicoService.listaMedicosDisponiveis(dadosMedicosDisponiveis, page, itens);
+        return ResponseEntity.ok(medicosDisponiveis);
+    }
 
     @PostMapping
     @Transactional

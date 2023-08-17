@@ -23,4 +23,14 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
                 AND (c.horaMarcada IS NULL OR c.horaMarcada != :dateTime)
             """)
     List<Medico> mostrarMedicosDisponiveisNaDataEHora(EspecialidadeEnum especialidadeEnum, LocalDateTime dateTime);
+
+    @Query("""
+                SELECT m
+                FROM Medico m
+                LEFT JOIN m.consultas c
+                WHERE m.ativo = true
+                AND m.especialidade = :especialidadeEnum
+                AND (c.horaMarcada IS NULL OR c.horaMarcada != :dateTime)
+            """)
+    List<Medico> mostrarMedicosDisponiveisNaDataEHoraA(EspecialidadeEnum especialidadeEnum, LocalDateTime dateTime);
 }

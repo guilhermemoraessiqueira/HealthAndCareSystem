@@ -1,9 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.services;
 
-import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosDetalhamentoMedico;
-import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosCadastroMedico;
-import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosListagemMedico;
-import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosAtualizacaoMedico;
+import com.system.care.health.HealthAndCareSystem.dtos.medico.*;
 import com.system.care.health.HealthAndCareSystem.models.Medico;
 import com.system.care.health.HealthAndCareSystem.repositories.MedicoRepository;
 import jakarta.transaction.Transactional;
@@ -12,6 +9,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -30,7 +30,19 @@ public class MedicoService {
 
 
     public Page<DadosListagemMedico> listaMedicos(int page, int itens) {
-        return medicoRepository.findAll(PageRequest.of(page, itens)).map(this::convertToPatientReturnDTO);
+        return medicoRepository.findAll(PageRequest.of(page, itens)).map(this::convertToReturnDTO);
+    }
+    public List<DadosListagemMedico> listaMedicosDisponiveis(DadosMedicosDisponiveis dadosMedicosDisponiveis,
+                                                             int page, int itens) {
+        var medico = medicoRepository.mostrarMedicosDisponiveisNaDataEHoraA(dadosMedicosDisponiveis.getEspecialidade(),
+                dadosMedicosDisponiveis.getHoraDaConsulta());
+        return listaMedicosDisponiveis(medico);
+    }
+
+    public List<DadosListagemMedico> listaMedicosDisponiveis(List<Medico> medicos) {
+        return medicos.stream()
+                .map(medico -> modelMapper.map(medico, DadosListagemMedico.class))
+                .collect(Collectors.toList());
     }
 
     public Medico atualizarMedico(Long id, DadosAtualizacaoMedico dadosAtualizacaoMedico) {
@@ -53,7 +65,7 @@ public class MedicoService {
         medico.excluir();
     }
 
-    private DadosListagemMedico convertToPatientReturnDTO(Medico medico) {
+    private DadosListagemMedico convertToReturnDTO(Medico medico) {
         DadosListagemMedico dadosListagemMedico = modelMapper.map(medico, DadosListagemMedico.class);
         return dadosListagemMedico;
     }
