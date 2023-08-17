@@ -25,7 +25,7 @@ public class MedicoService {
         return modelMapper.map(medicoRepository.save(medico), DadosCadastroMedico.class);
     }
     public DadosDetalhamentoMedico detalharMedico(Long id){
-        return modelMapper.map(medicoRepository.findById(id), DadosDetalhamentoMedico.class);
+        return modelMapper.map(medicoRepository.getReferenceById(gid), DadosDetalhamentoMedico.class);
     }
 
 

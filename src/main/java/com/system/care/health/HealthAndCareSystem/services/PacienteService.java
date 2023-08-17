@@ -28,7 +28,7 @@ public class PacienteService {
     }
 
     public DadosDetalhamentoPaciente detalharPaciente(Long id) {
-        return modelMapper.map(pacienteRepository.findById(id), DadosDetalhamentoPaciente.class);
+        return modelMapper.map(pacienteRepository.getReferenceById(id), DadosDetalhamentoPaciente.class);
     }
 
     public Paciente atualizarPaciente(Long id, Paciente patient) {
