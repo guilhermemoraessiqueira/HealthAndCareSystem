@@ -60,6 +60,4 @@ public class MedicoController {
         medicoService.deletarMedico(id);
         return ResponseEntity.noContent().build();
     }
-
-    //fazer atualizarMedico
 }

@@ -1,4 +1,4 @@
-package com.system.care.health.HealthAndCareSystem.infra;
+package com.system.care.health.HealthAndCareSystem.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
