@@ -1,6 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.validacao.consulta;
 
-import com.system.care.health.HealthAndCareSystem.ValidacaoExcepition;
+import com.system.care.health.HealthAndCareSystem.infra.exceptions.ValidacaoExcepition;
 import com.system.care.health.HealthAndCareSystem.dtos.consulta.DadosAgendamentoConsulta;
 import org.springframework.stereotype.Component;
 

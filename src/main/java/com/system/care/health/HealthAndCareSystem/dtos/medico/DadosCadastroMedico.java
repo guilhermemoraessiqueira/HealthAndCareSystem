@@ -2,6 +2,7 @@ package com.system.care.health.HealthAndCareSystem.dtos.medico;
 
 import com.system.care.health.HealthAndCareSystem.enums.EspecialidadeEnum;
 import com.system.care.health.HealthAndCareSystem.dtos.endereco.DadosEndereco;
+import com.system.care.health.HealthAndCareSystem.enums.UserRole;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -39,4 +40,7 @@ public class DadosCadastroMedico {
     @NotNull(message = "Dados do endereço são obrigatórios")
     @Valid
     private DadosEndereco endereco;
+
+    @NotNull(message = "Role obrigatória!")
+    private UserRole role;
 }

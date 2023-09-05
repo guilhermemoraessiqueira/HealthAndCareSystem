@@ -4,11 +4,14 @@ import com.system.care.health.HealthAndCareSystem.dtos.paciente.DadosListagemPac
 import com.system.care.health.HealthAndCareSystem.dtos.paciente.DadosRegistroPaciente;
 import com.system.care.health.HealthAndCareSystem.dtos.paciente.DadosDetalhamentoPaciente;
 import com.system.care.health.HealthAndCareSystem.models.Paciente;
+import com.system.care.health.HealthAndCareSystem.models.User;
 import com.system.care.health.HealthAndCareSystem.repositories.PacienteRepository;
+import com.system.care.health.HealthAndCareSystem.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,9 +19,14 @@ import org.springframework.stereotype.Service;
 public class PacienteService {
     PacienteRepository pacienteRepository;
     ModelMapper modelMapper;
+    UserRepository userRepository;
 
     public DadosRegistroPaciente cadastrarPaciente(DadosRegistroPaciente dadosRegistroPaciente){
         Paciente paciente = modelMapper.map(dadosRegistroPaciente, Paciente.class);
+        String encryptedPassword = new BCryptPasswordEncoder().encode(dadosRegistroPaciente.getSenha());
+
+        User newUser = new User (dadosRegistroPaciente.getEmail(), encryptedPassword, dadosRegistroPaciente.getRole());
+        userRepository.save(newUser);
         return modelMapper.map(pacienteRepository.save(paciente), DadosRegistroPaciente.class);
     }
 

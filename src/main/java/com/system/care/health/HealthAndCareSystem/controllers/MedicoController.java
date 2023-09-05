@@ -44,7 +44,7 @@ public class MedicoController {
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemMedico>> listar(@RequestParam(defaultValue = "0") int page,
-                                                                   @RequestParam(defaultValue = "10") int itens) {
+                                                            @RequestParam(defaultValue = "10") int itens) {
         Pageable pageable = PageRequest.of(page, itens);
         Page<DadosListagemMedico> medicosAtivos = medicoService.listaMedicos(page, itens);
         return ResponseEntity.ok(medicosAtivos);

@@ -1,5 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.dtos.paciente;
 
+import com.system.care.health.HealthAndCareSystem.enums.UserRole;
 import com.system.care.health.HealthAndCareSystem.models.Endereco;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -34,4 +35,7 @@ public class DadosRegistroPaciente {
     @NotNull(message = "Dados do endereço são obrigatórios")
     @Valid
     Endereco endereco;
+
+    @NotNull(message = "Role obrigatória!")
+    private UserRole role;
 }

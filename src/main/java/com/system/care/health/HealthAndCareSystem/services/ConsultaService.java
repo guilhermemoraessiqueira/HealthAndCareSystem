@@ -1,6 +1,6 @@
 package com.system.care.health.HealthAndCareSystem.services;
 
-import com.system.care.health.HealthAndCareSystem.ValidacaoExcepition;
+import com.system.care.health.HealthAndCareSystem.infra.exceptions.ValidacaoExcepition;
 import com.system.care.health.HealthAndCareSystem.dtos.consulta.DadosAgendamentoConsulta;
 import com.system.care.health.HealthAndCareSystem.dtos.consulta.DadosCancelamentoConsulta;
 import com.system.care.health.HealthAndCareSystem.dtos.consulta.DadosDetalhamentoConsulta;
@@ -31,7 +31,8 @@ public class ConsultaService {
 
     private List<ValidadorCancelamentoDeConsulta> validadoresCancelamento;
 
-    public DadosDetalhamentoConsulta agendarConsulta(DadosAgendamentoConsulta dados) {
+    public DadosDetalhamentoConsulta agendarConsulta(DadosAgendamentoConsulta dados){
+
         if (!pacienteRepository.existsById(dados.getIdMedico())) {
             throw new ValidacaoExcepition("Id do paciente informado não existente");
         }
@@ -52,6 +53,7 @@ public class ConsultaService {
         consultaRepository.save(consulta);
 
         return new DadosDetalhamentoConsulta(consulta);
+
     }
 
     public void cancelar(DadosCancelamentoConsulta dados) {

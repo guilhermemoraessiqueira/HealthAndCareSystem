@@ -2,6 +2,7 @@ package com.system.care.health.HealthAndCareSystem.models;
 
 import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosCadastroMedico;
 import com.system.care.health.HealthAndCareSystem.enums.EspecialidadeEnum;
+import com.system.care.health.HealthAndCareSystem.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -34,6 +35,10 @@ public class Medico implements UserDetails {
     private String crm;
 
     private Boolean ativo = true;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private UserRole role;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "especialidade")

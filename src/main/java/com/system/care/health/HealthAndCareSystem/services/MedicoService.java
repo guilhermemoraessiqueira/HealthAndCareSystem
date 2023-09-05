@@ -2,12 +2,16 @@ package com.system.care.health.HealthAndCareSystem.services;
 
 import com.system.care.health.HealthAndCareSystem.dtos.medico.*;
 import com.system.care.health.HealthAndCareSystem.models.Medico;
+import com.system.care.health.HealthAndCareSystem.models.User;
 import com.system.care.health.HealthAndCareSystem.repositories.MedicoRepository;
+import com.system.care.health.HealthAndCareSystem.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +21,21 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class MedicoService {
 
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
     MedicoRepository medicoRepository;
+    @Autowired
     ModelMapper modelMapper;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
-    public DadosCadastroMedico salvarMedico (DadosCadastroMedico dadosCadastroMedico){
-        Medico medico = modelMapper.map(dadosCadastroMedico, Medico.class);
+    public DadosCadastroMedico salvarMedico (DadosCadastroMedico data){
+        Medico medico = modelMapper.map(data, Medico.class);
+        String encryptedPassword = passwordEncoder.encode(data.getSenha());
+
+        User newUser = new User(data.getEmail(), encryptedPassword, data.getRole());
+        userRepository.save(newUser);
         return modelMapper.map(medicoRepository.save(medico), DadosCadastroMedico.class);
     }
     public DadosDetalhamentoMedico detalharMedico(Long id){

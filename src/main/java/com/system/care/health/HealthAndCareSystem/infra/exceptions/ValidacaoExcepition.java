@@ -1,4 +1,4 @@
-package com.system.care.health.HealthAndCareSystem;
+package com.system.care.health.HealthAndCareSystem.infra.exceptions;
 
 import lombok.Data;
 
