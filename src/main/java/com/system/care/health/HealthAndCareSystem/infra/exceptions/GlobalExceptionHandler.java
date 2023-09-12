@@ -6,6 +6,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.io.FileNotFoundException;
 
@@ -27,15 +28,7 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.badRequest().body(erros.stream().map(GlobalExceptionHandler.DadosErroValidacao::new).toList());
     }
-
-    @ExceptionHandler(FileNotFoundException.class)
-    public void erroFile (FileNotFoundException ex){
-        System.out.println(ex.getMessage());
-    }
-    @ExceptionHandler(RuntimeException.class)
-    public void erroR (RuntimeException ex){
-        System.out.println(ex.getMessage());
-    }
+    
 
     private record DadosErroValidacao(String campo, String mensagem){
         public DadosErroValidacao(FieldError erro){

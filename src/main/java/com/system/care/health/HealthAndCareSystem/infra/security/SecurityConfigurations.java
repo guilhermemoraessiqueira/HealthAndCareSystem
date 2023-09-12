@@ -30,8 +30,16 @@ public class SecurityConfigurations {
                 .authorizeHttpRequests(authorize ->authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll() //tirar mais pra frente
-                        .requestMatchers(HttpMethod.POST, "/medico").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/paciente").hasRole("USER")
+
+                        .requestMatchers(HttpMethod.POST, "/medico", "/medico/**" ).hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/medico", "/medico/**" ).hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/medico", "/medico/**" ).hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/medico", "/medico/**" ).hasRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.POST, "/paciente/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/paciente/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.DELETE, "/paciente/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.PUT, "/paciente/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
