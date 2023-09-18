@@ -6,6 +6,7 @@ import com.system.care.health.HealthAndCareSystem.dtos.paciente.DadosDetalhament
 import com.system.care.health.HealthAndCareSystem.models.Paciente;
 import com.system.care.health.HealthAndCareSystem.repositories.PacienteRepository;
 import com.system.care.health.HealthAndCareSystem.services.PacienteService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("paciente")
+@SecurityRequirement(name = "bearer-key")
 public class PacienteController {
 
     @Autowired

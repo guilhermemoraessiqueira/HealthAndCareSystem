@@ -3,12 +3,14 @@ package com.system.care.health.HealthAndCareSystem.controllers;
 import com.system.care.health.HealthAndCareSystem.dtos.consulta.DadosAgendamentoConsulta;
 import com.system.care.health.HealthAndCareSystem.dtos.consulta.DadosCancelamentoConsulta;
 import com.system.care.health.HealthAndCareSystem.services.ConsultaService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("consulta")
+@SecurityRequirement(name = "bearer-key")
 public class ConsultaController {
 
     @Autowired

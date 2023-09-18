@@ -6,6 +6,7 @@ import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosListagemMedic
 import com.system.care.health.HealthAndCareSystem.dtos.medico.DadosMedicosDisponiveis;
 import com.system.care.health.HealthAndCareSystem.repositories.MedicoRepository;
 import com.system.care.health.HealthAndCareSystem.services.MedicoService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("medico")
+@SecurityRequirement(name = "bearer-key")
 public class MedicoController {
 
     @Autowired
