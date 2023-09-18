@@ -1,4 +1,12 @@
 package com.system.care.health.HealthAndCareSystem.dtos.users;
 
-public record LoginDTO(String token) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class LoginDTO{
+    private String token;
 }
