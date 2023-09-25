@@ -182,7 +182,7 @@ Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licens
 
 ## Contato
 
-Linkedin: (https://www.linkedin.com/in/guilherme-moraes-siqueira/)https://www.linkedin.com/in/guilherme-moraes-siqueira/
+Linkedin: https://www.linkedin.com/in/guilherme-moraes-siqueira/)https://www.linkedin.com/in/guilherme-moraes-siqueira/
 
 Email: guimoraessiqueira@yahoo.com.br
 
