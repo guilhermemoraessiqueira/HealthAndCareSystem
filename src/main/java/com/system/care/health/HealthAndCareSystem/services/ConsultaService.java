@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @AllArgsConstructor
 @Service
@@ -31,6 +32,7 @@ public class ConsultaService {
 
     private List<ValidadorCancelamentoDeConsulta> validadoresCancelamento;
 
+
     public DadosDetalhamentoConsulta agendarConsulta(DadosAgendamentoConsulta dados){
 
         if (!pacienteRepository.existsById(dados.getIdMedico())) {
@@ -45,11 +47,15 @@ public class ConsultaService {
         var paciente = pacienteRepository.getReferenceById(dados.getIdPaciente());
         var medicos = escolherMedico(dados);
 
+        // TESTE PARA TENTAR PEGAR MÉDICO ALEATÓRIO SE FOR PRECISO
+        Random random = new Random();
+        int numeroRandomico = random.nextInt(medicos.size());
+
         if (medicos == null) {
             throw new ValidacaoExcepition("Não existe médico disponível nessa data!");
         }
 
-        var consulta = new Consulta(null, medicos.get(0), paciente, dados.getHoraDaConsulta(), null);
+        var consulta = new Consulta(null, medicos.get(numeroRandomico), paciente, dados.getHoraDaConsulta(), null);
         consultaRepository.save(consulta);
 
         return new DadosDetalhamentoConsulta(consulta);
